@@ -2189,6 +2189,64 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@prisma/client@npm:^5.15.0":
+  version: 5.15.0
+  resolution: "@prisma/client@npm:5.15.0"
+  peerDependencies:
+    prisma: "*"
+  peerDependenciesMeta:
+    prisma:
+      optional: true
+  checksum: 1ecb1e6a0db6e38b5d510f4764cd3531c85302c7a7e514d4d78a60504b24d08434b3bb3831045d64f4b1fc220ce8618822a2222e4a332b489619cd6d17c13e8c
+  languageName: node
+  linkType: hard
+
+"@prisma/debug@npm:5.15.0":
+  version: 5.15.0
+  resolution: "@prisma/debug@npm:5.15.0"
+  checksum: 3189f558c7f3550451d20aa5f347ff015e4e85e4edffd0adc7c9688c73d7433cf1bf5e0401d4dbaef79a0c66e9b18fcc0ecb50712d83a7b4722605ddaef44d12
+  languageName: node
+  linkType: hard
+
+"@prisma/engines-version@npm:5.15.0-29.12e25d8d06f6ea5a0252864dd9a03b1bb51f3022":
+  version: 5.15.0-29.12e25d8d06f6ea5a0252864dd9a03b1bb51f3022
+  resolution: "@prisma/engines-version@npm:5.15.0-29.12e25d8d06f6ea5a0252864dd9a03b1bb51f3022"
+  checksum: c669a0087da307228783739c7aa394c9077a7b171d36627b8599bc4cefbbd2733681b32ea42f88fc9b3dab64ad91ee2004ea693a3dcb91e7d82955d8ef4445ad
+  languageName: node
+  linkType: hard
+
+"@prisma/engines@npm:5.15.0":
+  version: 5.15.0
+  resolution: "@prisma/engines@npm:5.15.0"
+  dependencies:
+    "@prisma/debug": 5.15.0
+    "@prisma/engines-version": 5.15.0-29.12e25d8d06f6ea5a0252864dd9a03b1bb51f3022
+    "@prisma/fetch-engine": 5.15.0
+    "@prisma/get-platform": 5.15.0
+  checksum: b386b4a34ce5dc6c6d9b556b02dc1a8e079a706ce1faf4445860a1abf7f934d84aa3c7c6de40495b89a7382594767bc3b1b3af5a6baede354a7493732655af60
+  languageName: node
+  linkType: hard
+
+"@prisma/fetch-engine@npm:5.15.0":
+  version: 5.15.0
+  resolution: "@prisma/fetch-engine@npm:5.15.0"
+  dependencies:
+    "@prisma/debug": 5.15.0
+    "@prisma/engines-version": 5.15.0-29.12e25d8d06f6ea5a0252864dd9a03b1bb51f3022
+    "@prisma/get-platform": 5.15.0
+  checksum: 133c9578ec52b723d8664e0aef1de1340a5712ca4d9f65cb99b3393c795b8e858db0d16f02b9e7a3f798d9b81b73de443e9bff7d4509fe66cc9145ac972665b2
+  languageName: node
+  linkType: hard
+
+"@prisma/get-platform@npm:5.15.0":
+  version: 5.15.0
+  resolution: "@prisma/get-platform@npm:5.15.0"
+  dependencies:
+    "@prisma/debug": 5.15.0
+  checksum: 18358b490e1fdbb44a9b4e8b77eec1b5e428c0d71460042663e6de1809c95afdfddfac4a80d6c6a1efecb4f086d7e32a881fe02e38aa8c7ca3590fbe9240dde5
+  languageName: node
+  linkType: hard
+
 "@react-native-community/cli-clean@npm:13.6.6":
   version: 13.6.6
   resolution: "@react-native-community/cli-clean@npm:13.6.6"
@@ -2745,6 +2803,13 @@ __metadata:
   dependencies:
     "@sinonjs/commons": ^3.0.0
   checksum: 614d30cb4d5201550c940945d44c9e0b6d64a888ff2cd5b357f95ad6721070d6b8839cd10e15b76bf5e14af0bcc1d8f9ec00d49a46318f1f669a4bec1d7f3148
+  languageName: node
+  linkType: hard
+
+"@socket.io/component-emitter@npm:~3.1.0":
+  version: 3.1.2
+  resolution: "@socket.io/component-emitter@npm:3.1.2"
+  checksum: 89888f00699eb34e3070624eb7b8161fa29f064aeb1389a48f02195d55dd7c52a504e52160016859f6d6dffddd54324623cdd47fd34b3d46f9ed96c18c456edc
   languageName: node
   linkType: hard
 
@@ -4338,7 +4403,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:4":
+"debug@npm:4, debug@npm:~4.3.1, debug@npm:~4.3.2":
   version: 4.3.5
   resolution: "debug@npm:4.3.5"
   dependencies:
@@ -4573,6 +4638,26 @@ __metadata:
   dependencies:
     iconv-lite: ^0.6.2
   checksum: bb98632f8ffa823996e508ce6a58ffcf5856330fde839ae42c9e1f436cc3b5cc651d4aeae72222916545428e54fd0f6aa8862fd8d25bdbcc4589f1e3f3715e7f
+  languageName: node
+  linkType: hard
+
+"engine.io-client@npm:~6.5.2":
+  version: 6.5.3
+  resolution: "engine.io-client@npm:6.5.3"
+  dependencies:
+    "@socket.io/component-emitter": ~3.1.0
+    debug: ~4.3.1
+    engine.io-parser: ~5.2.1
+    ws: ~8.11.0
+    xmlhttprequest-ssl: ~2.0.0
+  checksum: a72596fae99afbdb899926fccdb843f8fa790c69085b881dde121285a6935da2c2c665ebe88e0e6aa4285637782df84ac882084ff4892ad2430b059fc0045db0
+  languageName: node
+  linkType: hard
+
+"engine.io-parser@npm:~5.2.1":
+  version: 5.2.2
+  resolution: "engine.io-parser@npm:5.2.2"
+  checksum: 470231215f3136a9259efb1268bc9a71f789af4e8c74da8d3b49ceb149fe3cd5c315bf0cd13d2d8d9c8f0f051c6f93b68e8fa9c89a3b612b9217bf33765c943a
   languageName: node
   linkType: hard
 
@@ -7229,6 +7314,7 @@ __metadata:
     "@babel/core": ^7.20.0
     "@babel/preset-env": ^7.20.0
     "@babel/runtime": ^7.20.0
+    "@prisma/client": ^5.15.0
     "@react-native-masked-view/masked-view": ^0.3.1
     "@react-native/babel-preset": 0.74.83
     "@react-native/eslint-config": 0.74.83
@@ -7259,6 +7345,7 @@ __metadata:
     jest: ^29.6.3
     ky: ^1.2.4
     prettier: 2.8.8
+    prisma: ^5.15.0
     react: 18.2.0
     react-i18next: ^14.1.0
     react-native: 0.74.1
@@ -7271,6 +7358,7 @@ __metadata:
     reactotron-react-native: ^5.1.6
     reactotron-react-native-mmkv: ^0.2.6
     reactotron-react-query: ^1.0.4
+    socket.io-client: ^4.7.5
     typescript: 5.1.3
     zod: ^3.23.0
     zustand: ^4.5.2
@@ -8549,6 +8637,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"prisma@npm:^5.15.0":
+  version: 5.15.0
+  resolution: "prisma@npm:5.15.0"
+  dependencies:
+    "@prisma/engines": 5.15.0
+  bin:
+    prisma: build/index.js
+  checksum: e780334771f0d64a4f9187013b137676ba9f767a162127f53b11f2955bc457f6250da22e0b31f7a2bf171a911cbd194d28c5a96a688d4ef07fe5bbbf014c807f
+  languageName: node
+  linkType: hard
+
 "proc-log@npm:^3.0.0":
   version: 3.0.0
   resolution: "proc-log@npm:3.0.0"
@@ -9553,6 +9652,28 @@ __metadata:
   version: 4.2.0
   resolution: "smart-buffer@npm:4.2.0"
   checksum: b5167a7142c1da704c0e3af85c402002b597081dd9575031a90b4f229ca5678e9a36e8a374f1814c8156a725d17008ae3bde63b92f9cfd132526379e580bec8b
+  languageName: node
+  linkType: hard
+
+"socket.io-client@npm:^4.7.5":
+  version: 4.7.5
+  resolution: "socket.io-client@npm:4.7.5"
+  dependencies:
+    "@socket.io/component-emitter": ~3.1.0
+    debug: ~4.3.2
+    engine.io-client: ~6.5.2
+    socket.io-parser: ~4.2.4
+  checksum: a6994b93a753d14292682ee97ba3c925c54b63e6fcb2ed5e0aa1d7c1d6164ed4a30d993f7eaaa3017ddf868ad0a1ab996badc8310129070136d84668789ee6c9
+  languageName: node
+  linkType: hard
+
+"socket.io-parser@npm:~4.2.4":
+  version: 4.2.4
+  resolution: "socket.io-parser@npm:4.2.4"
+  dependencies:
+    "@socket.io/component-emitter": ~3.1.0
+    debug: ~4.3.1
+  checksum: 61540ef99af33e6a562b9effe0fad769bcb7ec6a301aba5a64b3a8bccb611a0abdbe25f469933ab80072582006a78ca136bf0ad8adff9c77c9953581285e2263
   languageName: node
   linkType: hard
 
@@ -10582,6 +10703,28 @@ __metadata:
     utf-8-validate:
       optional: true
   checksum: c3c100a181b731f40b7f2fddf004aa023f79d64f489706a28bc23ff88e87f6a64b3c6651fbec3a84a53960b75159574d7a7385709847a62ddb7ad6af76f49138
+  languageName: node
+  linkType: hard
+
+"ws@npm:~8.11.0":
+  version: 8.11.0
+  resolution: "ws@npm:8.11.0"
+  peerDependencies:
+    bufferutil: ^4.0.1
+    utf-8-validate: ^5.0.2
+  peerDependenciesMeta:
+    bufferutil:
+      optional: true
+    utf-8-validate:
+      optional: true
+  checksum: 316b33aba32f317cd217df66dbfc5b281a2f09ff36815de222bc859e3424d83766d9eb2bd4d667de658b6ab7be151f258318fb1da812416b30be13103e5b5c67
+  languageName: node
+  linkType: hard
+
+"xmlhttprequest-ssl@npm:~2.0.0":
+  version: 2.0.0
+  resolution: "xmlhttprequest-ssl@npm:2.0.0"
+  checksum: 1e98df67f004fec15754392a131343ea92e6ab5ac4d77e842378c5c4e4fd5b6a9134b169d96842cc19422d77b1606b8df84a5685562b3b698cb68441636f827e
   languageName: node
   linkType: hard
 
