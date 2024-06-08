@@ -1,4 +1,4 @@
-import * as en from '@/translations/en';
+import * as en from '@/core/translations/en';
 import { defaultNS } from '@/translations';
 
 declare module 'i18next' {

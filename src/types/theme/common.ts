@@ -1,4 +1,4 @@
-import { config } from '@/theme/_config';
+import { config } from '@/ui/theme/_config';
 
 export type ArrayValue<T extends readonly unknown[]> = T[number];
 

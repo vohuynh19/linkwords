@@ -1,5 +1,5 @@
-import layout from '@/theme/layout';
-import componentGenerators from '@/theme/components';
+import layout from '@/ui/theme/layout';
+import componentGenerators from '@/ui/theme/components';
 
 import type { Theme as NavigationTheme } from '@react-navigation/native';
 import type { Colors } from '@/types/theme/colors';

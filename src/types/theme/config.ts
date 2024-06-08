@@ -1,5 +1,5 @@
-import { config } from '@/theme/_config';
-import generateConfig from '@/theme/ThemeProvider/generateConfig';
+import { config } from '@/ui/theme/_config';
+import generateConfig from '@/ui/theme/ThemeProvider/generateConfig';
 
 import type { Theme as NavigationTheme } from '@react-navigation/native';
 import type { AllPartial } from './common';

@@ -1,5 +1,5 @@
-import { config } from '@/theme/_config';
-import { staticFontStyles } from '@/theme/fonts';
+import { config } from '@/ui/theme/_config';
+import { staticFontStyles } from '@/ui/theme/fonts';
 
 import type { ArrayValue, RemoveBeforeSeparator, ToNumber } from './common';
 import type { UnionConfiguration } from './config';

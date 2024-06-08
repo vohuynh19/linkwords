@@ -1,4 +1,4 @@
-import { staticBackgroundStyles } from '@/theme/backgrounds';
+import { staticBackgroundStyles } from '@/ui/theme/backgrounds';
 
 import type { RemoveBeforeSeparator } from './common';
 import type { UnionConfiguration } from './config';
