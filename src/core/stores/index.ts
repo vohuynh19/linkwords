@@ -1,6 +1,8 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 import { localStorageInstance } from '@/core/di/storage';
+import { appLog } from '@/core/libs';
+import { promisify } from '@/core/utils';
 
 import { createAppSlice, IAppSlice } from './appSlice';
 import { createUserSlice, IUserSlice } from './userSlice';
@@ -19,3 +21,14 @@ export const useStore = create<IStore>()(
     },
   ),
 );
+
+export const initializeStores = async () => {
+  await Promise.all(
+    [useStore].map((store) =>
+      store.persist.hasHydrated()
+        ? Promise.resolve()
+        : promisify(store.persist.onFinishHydration),
+    ),
+  );
+  appLog.debug('Stores initialized');
+};

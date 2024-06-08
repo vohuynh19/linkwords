@@ -39,9 +39,10 @@ module.exports = {
     },
   },
   rules: {
+    'react-hooks/exhaustive-deps': 'error',
     '@typescript-eslint/no-unused-vars': 'error',
+    '@typescript-eslint/no-misused-promises': 'off',
     'global-require': 0,
-    'react-hooks/exhaustive-deps': 'off',
     quotes: ['error', 'single'],
     'object-curly-spacing': ['error', 'always'],
     'array-bracket-spacing': ['error', 'never'],

@@ -1,27 +1,22 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { IUser, IUserCreateInput } from '@/core/api';
+import { IUser, IUserUpdateInput } from '@/core/api';
 
 import { useUserApi } from './useUserApi';
 import { useUserApiKey } from './useUserApiKey';
 
-export const useCreateUser = () => {
+export const useUpdateUser = () => {
   const userApi = useUserApi();
   const userApiKey = useUserApiKey();
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationKey: userApiKey.createUserKey(),
-    mutationFn: (user: IUserCreateInput & { currentUserId?: number }) => {
-      const createUser = { ...user };
-      delete createUser.currentUserId;
-      return userApi.createUser(createUser);
+    mutationKey: userApiKey.updateUser(),
+    mutationFn: (user: IUserUpdateInput & { id: number }) => {
+      return userApi.updateUser(user.id, user);
     },
-    onMutate: async (
-      newUser: IUserCreateInput & { currentUserId?: number },
-    ) => {
-      const userId = newUser.currentUserId || 0;
+    onMutate: async (newUser: IUserUpdateInput & { id: number }) => {
+      const queryKey = userApiKey.getUserKey(newUser.id);
 
-      const queryKey = userApiKey.getUserKey(userId);
       await queryClient.cancelQueries({
         queryKey,
       });
@@ -35,7 +30,7 @@ export const useCreateUser = () => {
     onError: (err, newUser, context) => {
       if (context) {
         queryClient.setQueryData(
-          userApiKey.getUserKey(context.newUser.currentUserId || 0),
+          userApiKey.getUserKey(context.newUser.id),
           context.previousUser,
         );
       }
