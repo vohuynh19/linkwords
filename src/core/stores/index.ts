@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { createJSONStorage, persist } from 'zustand/middleware';
 import { localStorageInstance } from '@/core/di/storage';
 
 import { createAppSlice, IAppSlice } from './appSlice';
@@ -15,7 +15,7 @@ export const useStore = create<IStore>()(
     }),
     {
       name: 'app-storage',
-      getStorage: () => localStorageInstance,
+      storage: createJSONStorage(() => localStorageInstance),
     },
   ),
 );

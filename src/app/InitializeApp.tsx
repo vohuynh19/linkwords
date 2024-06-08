@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useState } from 'react';
 
-export function InitializeApp({ children }: { children: ReactNode }) {
+function InitializeApp({ children }: { children: ReactNode }) {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
