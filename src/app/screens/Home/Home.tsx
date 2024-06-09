@@ -1,29 +1,41 @@
-// import { useEffect } from 'react';
-// import { ActivityIndicator, Text, View } from 'react-native';
-import type { RootScreenProps } from '@/types/navigation';
-import { useTranslation } from 'react-i18next';
+import { StyleSheet, View } from 'react-native';
+import { useEffect, useState } from 'react';
+import { Appbar, Button, Card, Icon, TextInput } from 'react-native-paper';
 
 import { useStore } from '@/core/stores';
-import { useTheme } from '@/ui/theme';
-import { SafeScreen } from '@/ui/components/template';
+import { useCreateUser, useGetUser } from '@/core/hooks';
+import { RootScreenProps } from '@/app/navigators/types';
+import { Screen } from '@/ui/components';
 
-import { Text, TextInput, TouchableOpacity, View } from 'react-native';
-import { useEffect, useRef } from 'react';
-import { useCreateUser, useGetUser, useUpdateUser } from '@/core/hooks';
+const styles = StyleSheet.create({
+  container: {
+    height: '100%',
+    paddingHorizontal: 16,
+    justifyContent: 'center',
+  },
+  homeContainer: {
+    paddingHorizontal: 16,
+    justifyContent: 'center',
+    flex: 1,
+  },
+  inputTitle: {
+    marginTop: 24,
+    marginBottom: 12,
+  },
+  button: {
+    marginTop: 24,
+  },
+});
 
 function Home({ navigation }: RootScreenProps<'Home'>) {
-  const { t } = useTranslation(['common', 'input']);
-  const { layout, gutters, backgrounds, fonts } = useTheme();
   const { user, setUser } = useStore();
 
   const { data } = useGetUser(user.id);
   const { mutateAsync: createAnonymousUser } = useCreateUser();
-  const { mutate: updateAnonymousUser } = useUpdateUser();
 
-  const usernameRef = useRef<TextInput & { value: string }>(null);
+  const [username, setUsername] = useState('');
 
   const onEnterUsername = async () => {
-    const username = usernameRef.current?.value;
     if (username) {
       const newUser = await createAnonymousUser({
         username,
@@ -33,18 +45,6 @@ function Home({ navigation }: RootScreenProps<'Home'>) {
     }
   };
 
-  const onEnterChangeUsername = () => {
-    const username = usernameRef.current?.value;
-    if (username) {
-      updateAnonymousUser({
-        id: user.id,
-        username,
-      });
-    }
-  };
-
-  const onEnterGame = () => navigation.navigate('Game');
-
   useEffect(() => {
     if (data) {
       setUser(data);
@@ -53,75 +53,43 @@ function Home({ navigation }: RootScreenProps<'Home'>) {
 
   if (!user?.username) {
     return (
-      <SafeScreen>
-        <View
-          style={[
-            gutters.paddingHorizontal_12,
-            layout.fullHeight,
-            layout.justifyCenter,
-          ]}
-        >
+      <Screen>
+        <View style={styles.container}>
           <TextInput
-            ref={usernameRef}
-            onChangeText={(e) => {
-              if (usernameRef.current) {
-                usernameRef.current.value = e;
-              }
-            }}
-            placeholder={t('input:username.placeholder')}
-            style={[backgrounds.gray100, gutters.marginBottom_16]}
+            label="Username"
+            placeholder="Enter the username"
+            value={username}
+            onChangeText={(text) => setUsername(text)}
           />
-          <TouchableOpacity onPress={onEnterUsername}>
-            <Text>{t('common:enter')}</Text>
-          </TouchableOpacity>
+
+          <Button
+            mode="elevated"
+            style={styles.button}
+            onPress={onEnterUsername}
+          >
+            <Icon source="send" size={24} />
+          </Button>
         </View>
-      </SafeScreen>
+      </Screen>
     );
   }
 
   return (
-    <SafeScreen>
-      <View style={[gutters.paddingHorizontal_12]}>
-        <Text>{user.username}</Text>
+    <View style={{ height: '100%' }}>
+      <Appbar.Header>
+        <Appbar.Content title={user.username} />
+        <Appbar.Action icon="dots-vertical" onPress={() => {}} />
+      </Appbar.Header>
 
-        <View style={[gutters.marginBottom_16]} />
-
-        <View style={[layout.row]}>
-          <TextInput
-            ref={usernameRef}
-            onChangeText={(e) => {
-              if (usernameRef.current) {
-                usernameRef.current.value = e;
-              }
-            }}
-            placeholder={t('input:username.changeUsername')}
-            style={[backgrounds.gray100, layout.flex_1]}
+      <View style={styles.homeContainer}>
+        <Card onPress={() => navigation.navigate('Game')}>
+          <Card.Title
+            title="Chế độ 1v1"
+            subtitle="Hệ thống sẽ tự tìm đối thủ cho bạn."
           />
-
-          <TouchableOpacity
-            style={[layout.justifyCenter, backgrounds.gray50]}
-            onPress={onEnterChangeUsername}
-          >
-            <Text>{t('common:enter')}</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={[gutters.marginBottom_16]} />
-
-        <TouchableOpacity
-          style={[
-            layout.fullWidth,
-            layout.justifyCenter,
-            layout.itemsCenter,
-            gutters.paddingVertical_12,
-            backgrounds.purple500,
-          ]}
-          onPress={onEnterGame}
-        >
-          <Text style={[fonts.white]}>{t('common:1v1')}</Text>
-        </TouchableOpacity>
+        </Card>
       </View>
-    </SafeScreen>
+    </View>
   );
 }
 
