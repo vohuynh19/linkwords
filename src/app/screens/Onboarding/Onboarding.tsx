@@ -2,6 +2,7 @@ import Swiper from 'react-native-swiper';
 import { StyleSheet, View } from 'react-native';
 import { Button, Icon, Text, useTheme } from 'react-native-paper';
 import { RootScreenProps } from '@/app/navigators/types';
+import { useStore } from '@/core/stores';
 
 const styles = StyleSheet.create({
   wrapper: {},
@@ -40,6 +41,7 @@ const styles = StyleSheet.create({
 
 function Onboarding({ navigation }: RootScreenProps<'Onboarding'>) {
   const theme = useTheme();
+  const { setCompletedOnboarding } = useStore();
 
   return (
     <Swiper style={styles.wrapper} loop={false}>
@@ -50,7 +52,10 @@ function Onboarding({ navigation }: RootScreenProps<'Onboarding'>) {
         <Button
           style={styles.silde2Abs}
           rippleColor={theme.colors.backdrop}
-          onPress={() => navigation.navigate('Home')}
+          onPress={() => {
+            setCompletedOnboarding(true);
+            navigation.navigate('Home');
+          }}
         >
           <Icon source="close" size={24} />
         </Button>

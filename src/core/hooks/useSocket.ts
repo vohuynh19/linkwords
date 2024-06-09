@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { io } from 'socket.io-client';
 
 import { getSocketUrl } from '../utils';
@@ -16,6 +16,10 @@ export const useSocket = () => {
       },
     });
   }, [user.id]);
+
+  const killSocket = useCallback(() => {
+    socket.close();
+  }, [socket]);
 
   useEffect(() => {
     socket.on('connect', () => {
@@ -40,5 +44,5 @@ export const useSocket = () => {
     };
   }, [socket]);
 
-  return { socket, connected };
+  return { socket, connected, killSocket };
 };

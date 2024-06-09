@@ -1,12 +1,11 @@
-import { Variant } from '@/types/theme/config';
 import { StateCreator } from 'zustand';
 
 export interface IAppSlice {
-  theme: Variant;
-  setTheme: (theme: Variant) => void;
+  completedOnboarding: boolean;
+  setCompletedOnboarding: (completedOnboarding: boolean) => void;
 }
 
 export const createAppSlice: StateCreator<IAppSlice> = (set) => ({
-  theme: 'default',
-  setTheme: (theme) => set({ theme }),
+  completedOnboarding: false,
+  setCompletedOnboarding: (completedOnboarding) => set({ completedOnboarding }),
 });

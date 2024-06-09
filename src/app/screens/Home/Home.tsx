@@ -1,4 +1,4 @@
-import { StyleSheet, View } from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
 import { useEffect, useState } from 'react';
 import { Appbar, Button, Card, Icon, TextInput } from 'react-native-paper';
 
@@ -25,6 +25,16 @@ const styles = StyleSheet.create({
   button: {
     marginTop: 24,
   },
+  header: {
+    position: 'absolute',
+    top: Platform.select({
+      android: 4,
+      ios: 40,
+    }),
+    left: 0,
+    width: '100%',
+  },
+  fullHeight: { height: '100%' },
 });
 
 function Home({ navigation }: RootScreenProps<'Home'>) {
@@ -75,8 +85,8 @@ function Home({ navigation }: RootScreenProps<'Home'>) {
   }
 
   return (
-    <View style={{ height: '100%' }}>
-      <Appbar.Header>
+    <View style={styles.fullHeight}>
+      <Appbar.Header style={styles.header}>
         <Appbar.Content title={user.username} />
         <Appbar.Action icon="dots-vertical" onPress={() => {}} />
       </Appbar.Header>

@@ -1,12 +1,15 @@
 import { PropsWithChildren } from 'react';
-import { StatusBar, View } from 'react-native';
+import { StatusBar } from 'react-native';
+import { useTheme } from 'react-native-paper';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 function Screen({ children }: PropsWithChildren) {
+  const theme = useTheme();
   return (
-    <View>
-      <StatusBar />
+    <SafeAreaView edges={['right', 'left', 'top']}>
+      <StatusBar backgroundColor={theme.colors.background} />
       {children}
-    </View>
+    </SafeAreaView>
   );
 }
 

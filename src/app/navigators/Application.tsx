@@ -8,6 +8,8 @@ import {
 } from 'react-native-paper';
 
 import { Home, Game, Onboarding } from '@/app/screens';
+import { useStore } from '@/core/stores';
+
 import { RootStackParamList } from './types';
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -28,13 +30,15 @@ const { LightTheme } = adaptNavigationTheme({
 });
 
 function ApplicationNavigator() {
+  const { completedOnboarding } = useStore();
+
   return (
     <PaperProvider theme={theme}>
       <SafeAreaProvider>
         <NavigationContainer theme={LightTheme}>
           <Stack.Navigator
             screenOptions={{ headerShown: false }}
-            initialRouteName="Onboarding"
+            initialRouteName={completedOnboarding ? 'Onboarding' : 'Home'}
           >
             <Stack.Screen name="Onboarding" component={Onboarding} />
             <Stack.Screen name="Home" component={Home} />
